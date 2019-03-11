@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import WorkoutsIndex from './views/WorkoutsIndex.vue'
 import SignUp from './views/SignUp.vue'
 import Login from './views/Login.vue'
+import Logout from "./views/Logout.vue"
 
 Vue.use(Router)
 
@@ -12,6 +13,7 @@ export default new Router({
   routes: [
     { path: '/', name: 'workouts-index', component: WorkoutsIndex },
     { path: '/signup', name: 'sign-up', component: SignUp },
-    { path: '/login', name: 'login', component: Login}
+    { path: '/login', name: 'login', component: Login },
+    { path: "/logout", name: "logout", component: Logout }
   ]
 })

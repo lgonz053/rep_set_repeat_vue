@@ -1,6 +1,10 @@
 <template>
   <div class="workouts">
-    <h1>{{ workouts }}</h1>
+    <h1>Workouts</h1>
+    <h5>{{workouts}}</h5>
+    <!-- <div>
+      <li v-for=""></li>
+    </div> -->
   </div>
 </template>
 
@@ -9,6 +13,7 @@
 
 <script>
 var axios = require('axios');
+
 export default {
   data: function() {
     return {
@@ -24,3 +29,10 @@ export default {
   methods: {}
 };
 </script>
+
+<!-- var student_id = localStorage.getItem("student_id");
+   if (student_id) {
+     this.$router.push("/students/" + student_id);
+   } else {
+     this.$router.push("/login");
+   } -->
