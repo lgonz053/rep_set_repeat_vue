@@ -19,6 +19,7 @@
         </div>
 
         <input type="submit" value="Update">
+        <button type="submit" value="Delete" v-on:click="destroyWorkout()">Delete</button>
       </form>
   </div>
 </template>
@@ -56,9 +57,16 @@ export default {
 
       axios.patch("/api/workouts/" + this.workout.id, params)
         .then(response => {
-          this.$router.push('/workouts/' + this.workout.id);
+          this.$router.push('/workouts/' + this.workout.id);  
         }).catch(error => {
           this.errors = error.response.data.errors;
+        });
+    },
+    destroyWorkout: function() {
+      axios.delete("/api/workouts/" + this.workout.id)
+        .then(response => {
+          console.log("Success", response.data);
+          this.$router.push("/");
         });
     }
   }

@@ -1,6 +1,7 @@
 <template>
   <div class="workouts-index">
     <h1>Workouts</h1>
+
     <div v-for="workout in workouts">
       <router-link style='color:black' v-bind:to="'/workouts/' + workout.id">
         <h3><div>Muscle Group: {{ workout.muscle_group }}</div></h3>
