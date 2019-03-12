@@ -27,7 +27,14 @@
       </form>
     </div>
 
-    <div>{{workout_sets}}</div>
+    <div v-for="workout_set in workout.workout_sets">
+      {{ workout_set.id }}
+      {{ workout_set.exercise.name }} |
+      Set: {{ workout_set.groups }} |
+      Reps: {{ workout_set.reps }} |
+      Weight: {{ workout_set.weight }} |
+      Total Volume: {{ workout_set.total_volume }} |
+    </div>
   </div>
 </template>
 
@@ -37,21 +44,31 @@ var axios = require('axios');
 export default {
   data: function() {
     return {
-            workout_sets:
-                        {
-                         workout_id: '',
-                         exercise_id: '',
-                         groups: '',
-                         reps: '',
-                         weight: '',
-                         total_volume: '',
-                         exercise: {
-                                   id: '',
-                                   name: '',
-                                   description: '',
-                                   video_url: ''
-                                   }
-                          }, 
+            workout: [
+                         {
+                          id: '',
+                          user_id: '',
+                          muscle_group: '',
+                          time_limit: '',
+                          created_at: '',
+                          workout_sets: [
+                                          {
+                                           workout_id: '',
+                                           exercise_id: '',
+                                           groups: '',
+                                           reps: '',
+                                           weight: '',
+                                           total_volume: '',
+                                           exercise: {
+                                                     id: '',
+                                                     name: '',
+                                                     description: '',
+                                                     video_url: ''
+                                                     }
+                                            }
+                                        ] 
+                         }
+                      ],
             selectedExerciseId: '',
             exercises: [],
             NewSet: '',
@@ -66,9 +83,9 @@ export default {
         this.exercises = response.data;
       });
 
-      axios.get('/api/workout_sets/' + this.$route.params.id)
+      axios.get('/api/workouts/' + this.$route.params.id)
         .then(response => {
-          this.workout_sets = response.data
+          this.workout = response.data
       });
   },
   methods: {
@@ -83,8 +100,9 @@ export default {
 
       axios.post('api/workout_sets', params)
         .then(response => {
-          console.log('Success', response.data);
-          this.route.push('/workouts' + this.$route.params.id)
+          // console.log('Success', response.data);
+          // this.$router.push('/workouts/' + this.$route.params.id)
+          this.workout.workout_sets.push(response.data);
         }).catch(error => {
           this.errors = error.response.data.errors;
         });

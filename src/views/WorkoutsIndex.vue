@@ -40,8 +40,7 @@ export default {
     axios.get('/api/workouts')
       .then(response => {
         this.workouts = response.data
-      }).
-      catch(error => {
+      }).catch(error => {
         this.$router.push("/login");    
       });
   },
