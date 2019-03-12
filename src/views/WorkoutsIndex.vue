@@ -1,18 +1,32 @@
 <template>
-  <div class="workouts">
+  <div class="workouts-index">
     <h1>Workouts</h1>
-    <h5>{{workouts}}</h5>
-    <!-- <div>
-      <li v-for=""></li>
-    </div> -->
+    <div v-for="workout in workouts">
+      <ul>
+          <h3><div>Muscle Group: {{ workout.muscle_group }}</div></h3>
+          <div>Date: {{ moment((workout.created_at)).format('ll') }}</div>
+      </ul>
+    </div>
   </div>
 </template>
 
 <style>
+.workouts-index{
+  padding: 20px;
+  margin-top: 30px;
+}
+.workouts-index h1{
+  text-decoration: underline;
+}
+.workouts-index h3{
+  text-align: center;
+  
+}
 </style>
 
 <script>
 var axios = require('axios');
+var moment = require('moment');
 
 export default {
   data: function() {
@@ -24,15 +38,15 @@ export default {
     axios.get('/api/workouts')
       .then(response => {
         this.workouts = response.data
+      }).
+      catch(error => {
+        this.$router.push("/login");    
       });
   },
-  methods: {}
+  methods: {
+    moment: function(date) {
+      return moment(date);
+    }
+  }
 };
 </script>
-
-<!-- var student_id = localStorage.getItem("student_id");
-   if (student_id) {
-     this.$router.push("/students/" + student_id);
-   } else {
-     this.$router.push("/login");
-   } -->
