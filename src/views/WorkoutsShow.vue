@@ -1,64 +1,58 @@
 <template>
   <div class="workouts-show">
-    <h1>New Photo</h1>
+
+    <h1>Current Workout</h1>
+    
     <div>
-      Name: <input type="text" v-model="newPhotoName">
-      Width: <input type="text" v-model="newPhotoWidth">
-      Height: <input type="text" v-model="newPhotoHeight">
-      <button v-on:click="createPhoto()">Create Photo</button>
+      Exercise Name:
+
+      <select v-model="selectedExerciseId" id="names">
+        <option v-for="exercise in exercises" v-bind:value="exercise.id">{{ exercise.name }}</option>
+      </select>
     </div>
-    <h1>All Photos</h1>
-    <div v-for="photo in photos">
-      <h2>{{ photo.name }}</h2>
-      <img v-bind:src="photo.url">
-      <button v-on:click="showPhoto(photo)">Show more</button>
-      <div v-if="currentPhoto === photo">
-        <p>Width: {{ photo.width }}</p>
-        <p>Height: {{ photo.height }}</p>
-      </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-
+var axios = require('axios');
 export default {
   data: function() {
     return {
-      photos: [],
-      currentPhoto: {},
-      newPhotoName: "",
-      newPhotoWidth: "",
-      newPhotoHeight: ""
+            workout_sets: [
+              {
+               workout_id: "",
+               exercise_id: "",
+               groups: "",
+               reps: "",
+               weight: "",
+               total_volume: "",
+               exercise:
+                   {
+                     id: "",
+                     name: "",
+                     description: "",
+                     video_url: "",
+                     body_parts: [
+                       {
+                         id: "",
+                         name: "",
+                         muscle_group: ""
+                     }
+                   ]
+                 }
+              }
+            ],
+        selectedExerciseId: '',
+        exercises: []
     };
   },
   created: function() {
-    axios.get("/api/photos").then(response => {
-          this.photos = response.data;
-        });
-      },
-      methods: {
-        createPhoto: function() {
-          var params = {
-            name: this.newPhotoName,
-            width: this.newPhotoWidth,
-            height: this.newPhotoHeight
-          };
-          axios.post("/api/photos", params).then(response => {
-            this.photos.push(response.data);
-            this.newPhotoName = "";
-            this.newPhotoWidth = "";
-            this.newPhotoHeight = "";
-          });
-        },
-        showPhoto: function(photo) {
-          if (this.currentPhoto === photo) {
-            this.currentPhoto = {};
-          } else {
-            this.currentPhoto = photo;
-          }
-        }
-      }
-    };
+    axios.get('api/exercises')
+      .then(response => {
+        this.exercises = response.data;
+      });
+  },
+  methods: {}
+};
 </script>
