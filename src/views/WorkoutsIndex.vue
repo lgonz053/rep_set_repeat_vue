@@ -2,10 +2,11 @@
   <div class="workouts-index">
     <h1>Workouts</h1>
     <div v-for="workout in workouts">
-      <ul>
-          <h3><div>Muscle Group: {{ workout.muscle_group }}</div></h3>
-          <div>Date: {{ moment((workout.created_at)).format('ll') }}</div>
-      </ul>
+      <router-link style='color:black' v-bind:to="'/workouts/' + workout.id">
+        <h3><div>Muscle Group: {{ workout.muscle_group }}</div></h3>
+      </router-link>
+        <div>Date: {{ moment((workout.created_at)).format('ll') }}</div>
+        <div>Time: {{ workout.time_limit }}</div>
     </div>
   </div>
 </template>
@@ -20,7 +21,7 @@
 }
 .workouts-index h3{
   text-align: center;
-  
+
 }
 </style>
 
