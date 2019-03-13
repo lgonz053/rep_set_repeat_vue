@@ -27,13 +27,25 @@
       </form>
     </div>
 
-    <div v-for="workout_set in workout.workout_sets">
+    <div v-for="workout_set in workout.workout_sets" v-model="selectedWorkoutSetId" v-bind:value="workout_set.id">
+      <button type="click" v-on:click="destroySet()">Delete Set</button>
       {{ workout_set.id }}
       {{ workout_set.exercise.name }} |
       Set: {{ workout_set.groups }} |
       Reps: {{ workout_set.reps }} |
       Weight: {{ workout_set.weight }} |
-      Total Volume: {{ workout_set.total_volume }} |
+      Volume: {{ workout_set.total_volume }} |
+    </div>
+
+    <div>
+      <button type="click" v-on:click="calculate()">Calculate Total Volume</button>
+      Total Volume Today: {{ this.VolumePerDay }}
+    </div>
+
+    <div>
+      <router-link v-bind:to="'/workouts/' + workout.id + '/edit'">
+        <button>Edit Workout</button>
+      </router-link>
     </div>
   </div>
 </template>
@@ -70,10 +82,13 @@ export default {
                          }
                       ],
             selectedExerciseId: '',
+            selectedWorkoutSetId: '',
             exercises: [],
             NewSet: '',
             NewReps: '',
             NewWeight: '',
+            Tota_volume: '',
+            VolumePerDay: '',
             errors: []
     };
   },
@@ -100,11 +115,24 @@ export default {
 
       axios.post('api/workout_sets', params)
         .then(response => {
-          // console.log('Success', response.data);
-          // this.$router.push('/workouts/' + this.$route.params.id)
           this.workout.workout_sets.push(response.data);
         }).catch(error => {
           this.errors = error.response.data.errors;
+        });
+    },
+    calculate: function() {
+      var workoutSet = this.workout.workout_sets;
+
+      for(var i = 0; i <= workoutSet; i++) {
+        var currentSet = workoutSet[i];
+        this.VolumePerDay += currentSet['total_volume'];
+      }
+    },
+    destroySet: function() {
+      axios.delete("/api/workout_sets/" + this.selectedWorkoutSetId)
+        .then(response => {
+          console.log("Success", response.data);
+          this.$router.push("/");
         });
     }
   }
