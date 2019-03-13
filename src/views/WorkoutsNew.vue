@@ -10,11 +10,11 @@
       <div>Legs | Chest | Back | Shoulders | Biceps | Triceps | Abs | Cardio</div><br>
 
       <div>
-        Muscle Group: <input v-model="NewMuscleGroup">
+        Muscle Group: <input v-model="newMuscleGroup">
       </div>
 
       <div>
-        Time Limit: <input v-model="NewTimeLimit">
+        Time Limit: <input v-model="newTimeLimit">
       </div>
 
       <input type="submit" value="Update">
@@ -32,8 +32,8 @@ var axios = require('axios');
 export default {
   data: function() {
     return {
-              NewMuscleGroup: '',
-              NewTimeLimit: '',
+              newMuscleGroup: '',
+              newTimeLimit: '',
               errors: []
     };
   },
@@ -41,8 +41,8 @@ export default {
   methods: {
     submit: function() {
       var params = {
-                    muscle_group: this.NewMuscleGroup,
-                    time_limit: this.NewTimeLimit
+                    muscle_group: this.newMuscleGroup,
+                    time_limit: this.newTimeLimit
                    };
 
       axios.post("/api/workouts", params)

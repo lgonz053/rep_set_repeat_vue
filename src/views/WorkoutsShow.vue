@@ -12,24 +12,23 @@
 
       <form v-on:submit.prevent="submit()">
         <div>
-          Set: <input v-model="NewSet">
+          Set: <input v-model="newSet">
         </div>
 
         <div>
-          Reps: <input v-model="NewReps">
+          Reps: <input v-model="newReps">
         </div>
 
         <div>
-          Weight: <input v-model="NewWeight">
+          Weight: <input v-model="newWeight">
         </div>
 
       <input type="submit" value="Create Set">
       </form>
     </div>
 
-    <div v-for="workout_set in workout.workout_sets" v-model="selectedWorkoutSetId" v-bind:value="workout_set.id">
-      <button type="click" v-on:click="destroySet()">Delete Set</button>
-      {{ workout_set.id }}
+    <div v-for="workout_set in workout.workout_sets">
+      <button type="click" v-on:click="destroySet(workout_set.id)">Delete Set</button>
       {{ workout_set.exercise.name }} |
       Set: {{ workout_set.groups }} |
       Reps: {{ workout_set.reps }} |
@@ -38,8 +37,8 @@
     </div>
 
     <div>
-      <button type="click" v-on:click="calculate()">Calculate Total Volume</button>
-      Total Volume Today: {{ this.VolumePerDay }}
+      <button v-on:click="calculate()">Calculate Total Volume</button>
+      Total Volume Today: {{ volumePerDay }}
     </div>
 
     <div>
@@ -65,6 +64,7 @@ export default {
                           created_at: '',
                           workout_sets: [
                                           {
+                                           id: '',
                                            workout_id: '',
                                            exercise_id: '',
                                            groups: '',
@@ -84,11 +84,11 @@ export default {
             selectedExerciseId: '',
             selectedWorkoutSetId: '',
             exercises: [],
-            NewSet: '',
-            NewReps: '',
-            NewWeight: '',
-            Tota_volume: '',
-            VolumePerDay: '',
+            newSet: '',
+            newReps: '',
+            newWeight: '',
+            total_volume: '',
+            volumePerDay: 0,
             errors: []
     };
   },
@@ -108,9 +108,9 @@ export default {
       var params = {
                     workout_id: this.$route.params.id,
                     exercise_id: this.selectedExerciseId,
-                    groups: this.NewSet,
-                    reps: this.NewReps,
-                    weight: this.NewWeight
+                    groups: this.newSet,
+                    reps: this.newReps,
+                    weight: this.newWeight
                     }
 
       axios.post('api/workout_sets', params)
@@ -123,13 +123,13 @@ export default {
     calculate: function() {
       var workoutSet = this.workout.workout_sets;
 
-      for(var i = 0; i <= workoutSet; i++) {
+      for(var i = 0; i < workoutSet.length; i++) {
         var currentSet = workoutSet[i];
-        this.VolumePerDay += currentSet['total_volume'];
+        this.volumePerDay += currentSet['total_volume'];
       }
     },
-    destroySet: function() {
-      axios.delete("/api/workout_sets/" + this.selectedWorkoutSetId)
+    destroySet: function(inputId) {
+      axios.delete("/api/workout_sets/" + inputId)
         .then(response => {
           console.log("Success", response.data);
           this.$router.push("/");

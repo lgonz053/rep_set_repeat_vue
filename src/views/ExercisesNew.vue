@@ -4,15 +4,15 @@
 
     <form v-on:submit.prevent="submit()">
       <div>
-        Name: <input v-model="NewExerciseName">
+        Name: <input v-model="newExerciseName">
       </div>
 
       <div>
-        Description: <input v-model="NewExerciseDescription">
+        Description: <input v-model="newExerciseDescription">
       </div>
 
       <div>
-        Video Url (optional): <input v-model="NewExerciseUrl">
+        Video Url (optional): <input v-model="newExerciseUrl">
       </div>
       <input type="submit" value="Create">
     </form>
@@ -20,24 +20,24 @@
     <div>
       <h2>Edit Exercise:</h2>
 
-      <select v-model="selectedExerciseId" id="names">
-        <option v-for="exercise in exercises">{{ exercise.name }}</option>
+      <select v-on:change="getExercise()">
+        <option v-for="exercise in exercises" v-bind:value="exercise.id">{{ exercise.name }}</option>
       </select>
 
       <form v-on:submit.prevent="submit()">
         <div>
-          Set: <input v-model="NewSet">
+          Name: <input v-model="exercise.name">
         </div>
 
         <div>
-          Reps: <input v-model="NewReps">
+          Description: <input v-model="exercise.description">
         </div>
 
         <div>
-          Weight: <input v-model="NewWeight">
+          Video Url: <input v-model="exercise.video_url">
         </div>
 
-      <input type="submit" value="Create Set">
+      <input type="submit" value="Edit Exercise">
       </form>
     </div>
   </div>
@@ -52,10 +52,16 @@ var axios = require('axios');
 export default {
   data: function() {
     return {
-            NewExerciseName: '',
-            NewExerciseDescription: '',
-            NewExerciseUrl: '',
+            newExerciseName: '',
+            newExerciseDescription: '',
+            newExerciseUrl: '',
             exercises: {
+                      id: '',
+                      name: '',
+                      description: '',
+                      video_url: ''
+                      },
+            exercise: {
                       id: '',
                       name: '',
                       description: '',
@@ -72,9 +78,9 @@ export default {
   methods: {
     submit: function() {
       var params = {
-                    name: this.NewExerciseName,
-                    description: this.NewExerciseDescription,
-                    video_url: this.NewExerciseUrl
+                    name: this.newExerciseName,
+                    description: this.newExerciseDescription,
+                    video_url: this.newExerciseUrl
                    };
 
       axios.post("/api/exercises", params)
@@ -83,6 +89,12 @@ export default {
           this.$router.push("/")
         }).catch(error => {
           this.errors = error.response.data.errors;
+        });
+    },
+    getExercise: function() {
+      axios.get('api/exercises')
+        .then(response => {
+          this.exercise = response.data;
         });
     }
   }
