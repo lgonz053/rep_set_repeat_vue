@@ -7,6 +7,8 @@ import WorkoutsIndex from './views/WorkoutsIndex.vue'
 import WorkoutsNew from './views/WorkoutsNew.vue'
 import WorkoutsShow from './views/WorkoutsShow.vue'
 import WorkoutsEdit from './views/WorkoutsEdit.vue'
+import ExercisesNew from './views/ExercisesNew.vue'
+
 
 Vue.use(Router)
 
@@ -18,8 +20,9 @@ export default new Router({
     { path: '/signup', name: 'sign-up', component: SignUp },
     { path: '/login', name: 'login', component: Login },
     { path: '/logout', name: "logout", component: Logout },
-    { path: '/workouts/new', name: 'workout-new', component: WorkoutsNew},
-    { path: '/workouts/:id', name: 'workout-show', component: WorkoutsShow},
-    { path: '/workouts/:id/edit', name: 'workout-edit', component: WorkoutsEdit}
+    { path: '/workouts/new', name: 'workouts-new', component: WorkoutsNew},
+    { path: '/workouts/:id', name: 'workouts-show', component: WorkoutsShow},
+    { path: '/workouts/:id/edit', name: 'workouts-edit', component: WorkoutsEdit},
+    { path: '/exercises/new', name: 'exercises-new', component: ExercisesNew}
   ]
 })

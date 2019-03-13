@@ -32,8 +32,8 @@ var axios = require('axios');
 export default {
   data: function() {
     return {
-              NewMuscleGroup: "",
-              NewTimeLimit: "",
+              NewMuscleGroup: '',
+              NewTimeLimit: '',
               errors: []
     };
   },

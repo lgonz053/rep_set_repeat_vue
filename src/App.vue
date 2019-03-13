@@ -3,6 +3,7 @@
     <div id="nav">
       | <router-link to="/">Workouts</router-link> |
       <router-link to="/workouts/new">New Workout</router-link> |
+      <router-link to="/exercises/new">New Exercise</router-link> |
       <router-link to="/login">Login</router-link> |
       <router-link to="/logout">Logout</router-link> |
       <router-link to="/signup">Sign Up</router-link> |
