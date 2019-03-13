@@ -19,7 +19,7 @@
         </div>
 
         <input type="submit" value="Update">
-        <button type="submit" value="Delete" v-on:click="destroyWorkout()">Delete</button>
+        <button type="submit" value="Delete" v-on:click="destroyWorkout(workout.id)">Delete</button>
       </form>
   </div>
 </template>
@@ -62,8 +62,8 @@ export default {
           this.errors = error.response.data.errors;
         });
     },
-    destroyWorkout: function() {
-      axios.delete("/api/workouts/" + this.workout.id)
+    destroyWorkout: function(inputId) {
+      axios.delete('/api/workouts/' + inputId)
         .then(response => {
           console.log("Success", response.data);
           this.$router.push("/");
