@@ -20,11 +20,14 @@
     <div>
       <h2>Edit Exercise:</h2>
 
-      <select v-on:change="getExercise()">
+      <select v-model="selectedExerciseId" v-on:change="getExercise()">
         <option v-for="exercise in exercises" v-bind:value="exercise.id">{{ exercise.name }}</option>
       </select>
 
-      <form v-on:submit.prevent="submit()">
+      <form v-on:submit.prevent="editExercise()">
+        Name: {{ exercise.name }}<br>
+        Description: {{ exercise.description }}<br>
+        Video Url: {{ exercise.video_url }}
         <div>
           Name: <input v-model="exercise.name">
         </div>
@@ -61,6 +64,7 @@ export default {
                       description: '',
                       video_url: ''
                       },
+            selectedExerciseId: '',
             exercise: {
                       id: '',
                       name: '',
@@ -92,9 +96,22 @@ export default {
         });
     },
     getExercise: function() {
-      axios.get('api/exercises')
+      axios.get('api/exercises/' + this.selectedExerciseId)
         .then(response => {
           this.exercise = response.data;
+        });
+    },
+    editExercise: function() {
+      var params = {
+                    name: this.exercise.name,
+                    description: this.exercise.description,
+                    video_url: this.exercise.video_url
+                   }
+      axios.patch('api/exercises/' + this.selectedExerciseId, params)
+        .then(response => {
+          this.$router.push('/');
+        }).catch(error => {
+          this.errors = error.response.data.errors;
         });
     }
   }
