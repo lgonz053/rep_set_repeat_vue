@@ -13,8 +13,20 @@
         Muscle Group: <input v-model="newMuscleGroup">
       </div>
 
+      <h3>Time Limit</h3>
+
+      <select v-model="selectedHour">
+        <option v-for="hour in hours" v-bind:value="hour">{{ hour }}</option>
+      </select>
+
+      <select v-model="selectedMinute" v-on:change="hoursMinutes()">
+        <option v-for="minute in minutes" v-bind:value="minute">{{ minute }}</option>
+      </select>
+
       <div>
-        Time Limit: <input v-model="newTimeLimit">
+        <h5 v-if="newHour < 2 && newMinute === .00">{{ `${newHour} hour and ${newMinute}`}}</h5>
+        <h5 v-else-if="newMinute === .00">{{ `${newHour} hours and ${newMinute} minutes`}} </h5>
+        <h5 v-else-if="newHour > 2 && newMinute > .00">{{ `${newHour} hours and ${newMinute} minutes`}} </h5>
       </div>
 
       <input type="submit" value="Update">
@@ -33,7 +45,13 @@ export default {
   data: function() {
     return {
               newMuscleGroup: '',
-              newTimeLimit: '',
+              newHour: 0,
+              newMinute: 0,
+              newTimeLimit: 0,
+              hours: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+              minutes: [.00, .15, .30, .45],
+              selectedHour: 0,
+              selectedMinute: 0,
               errors: []
     };
   },
@@ -52,6 +70,11 @@ export default {
         }).catch(error => {
           this.errors = error.response.data.errors;
         });
+    },
+    hoursMinutes: function() {
+      this.newHour += this.selectedHour 
+      this.newMinute += this.selectedMinute
+      this.newTimeLimit = this.selectedHour + this.selectedMinute
     }
   }
 };
