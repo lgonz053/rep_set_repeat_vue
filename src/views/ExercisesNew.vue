@@ -40,7 +40,7 @@
           Video Url: <input v-model="exercise.video_url">
         </div>
 
-      <input type="submit" value="Edit Exercise">
+        <input type="submit" value="Edit Exercise">
       </form>
     </div>
   </div>
