@@ -4,10 +4,10 @@
 
     <div v-for="workout in workouts">
       <router-link style='color:black' v-bind:to="'/workouts/' + workout.id">
-        <h3><div>Muscle Group: {{ workout.muscle_group }}</div></h3>
+        <h3><div>Muscle: {{ workout.muscle_group }}</div></h3>
       </router-link>
         <div>Date: {{ moment((workout.created_at)).format('ll') }}</div>
-        <div v-on:load="userFriendlyTime(workout.time_limit)">Time: {{ userFriendlyHour }}</div>
+        <div v-on:load="userFriendlyTime(workout.time_limit)">Workout Length: {{ workout.time_limit }}</div>
     </div>
   </div>
 </template>

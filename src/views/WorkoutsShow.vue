@@ -94,6 +94,7 @@ export default {
             total_volume: '',
             volumePerDay: 0,
             displayDeleteButton: false,
+            titleFilter: '',
             errors: []
     };
   },
