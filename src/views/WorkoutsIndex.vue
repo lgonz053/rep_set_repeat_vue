@@ -7,7 +7,7 @@
         <h3><div>Muscle Group: {{ workout.muscle_group }}</div></h3>
       </router-link>
         <div>Date: {{ moment((workout.created_at)).format('ll') }}</div>
-        <div>Time: {{ workout.time_limit }}</div>
+        <div v-on:load="userFriendlyTime(workout.time_limit)">Time: {{ userFriendlyHour }}</div>
     </div>
   </div>
 </template>
@@ -33,7 +33,9 @@ var moment = require('moment');
 export default {
   data: function() {
     return {
-      workouts: []
+      workouts: [],
+      userFriendlyHour: 0,
+      userFriendlyMinute: 0
     };
   },
   created: function() {
@@ -48,6 +50,15 @@ export default {
     moment: function(date) {
       return moment(date);
     }
+  },
+    userFriendlyTime: function(time) {
+      console.log(time);
+      currentTime = parseInt(time);
+
+      console.log(currentTime);
+      minutes = currentTime * 60;
+      userFriendlyMinute = (minutes % 60).round;
+      userFriendlyHour = currentTime.floor;
   }
 };
 </script>
