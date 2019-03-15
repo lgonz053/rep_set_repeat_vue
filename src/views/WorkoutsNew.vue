@@ -16,18 +16,15 @@
       <h3>Time Limit</h3>
 
       <select v-model="selectedHour">
-        <option v-for="hour in hours" v-bind:value="hour">{{ hour }}</option>
+        <option v-for="hour in hours" v-bind:value="hour">{{ hour }} Hours</option>
       </select>
 
       <select v-model="selectedMinute" v-on:change="hoursMinutes()">
-        <option v-for="minute in minutes" v-bind:value="minute">{{ minute }}</option>
+        <option v-bind:value="0">00 Minutes</option>
+        <option v-bind:value="0.25">15 Minutes</option>
+        <option v-bind:value="0.5">30 Minutes</option>
+        <option v-bind:value="0.75">45 Minutes</option>
       </select>
-
-      <div>
-        <h5 v-if="newHour < 2 && newMinute === .00">{{ `${newHour} hour and ${newMinute}`}}</h5>
-        <h5 v-else-if="newMinute === .00">{{ `${newHour} hours and ${newMinute} minutes`}} </h5>
-        <h5 v-else-if="newHour > 2 && newMinute > .00">{{ `${newHour} hours and ${newMinute} minutes`}} </h5>
-      </div>
 
       <input type="submit" value="Update">
     </form>
@@ -48,7 +45,7 @@ export default {
               newHour: 0,
               newMinute: 0,
               newTimeLimit: 0,
-              hours: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+              hours: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
               minutes: [.00, .15, .30, .45],
               selectedHour: 0,
               selectedMinute: 0,
@@ -60,7 +57,7 @@ export default {
     submit: function() {
       var params = {
                     muscle_group: this.newMuscleGroup,
-                    time_limit: this.newTimeLimit
+                    time_limit: parseInt(this.selectedHour) + parseInt(this.selectedMinute)
                    };
 
       axios.post("/api/workouts", params)
@@ -72,6 +69,10 @@ export default {
         });
     },
     hoursMinutes: function() {
+      this.newHour = 0
+      this.newMinute = 0
+      this.newTimeLimit = 0
+
       this.newHour += this.selectedHour 
       this.newMinute += this.selectedMinute
       this.newTimeLimit = this.selectedHour + this.selectedMinute

@@ -27,8 +27,12 @@
       </form>
     </div>
 
+    <button v-on:click="hideShowDelete()">Edit Sets</button>
+
     <div v-for="workout_set in workout.workout_sets">
-      <button type="click" v-on:click="destroySet(workout_set.id)">Delete Set</button>
+      <span v-if="displayDeleteButton">
+        <button type="click" v-on:click="destroySet(workout_set.id)">Delete Set</button>
+      </span>
       {{ workout_set.exercise.name }} |
       Set: {{ workout_set.groups }} |
       Reps: {{ workout_set.reps }} |
@@ -89,6 +93,7 @@ export default {
             newWeight: '',
             total_volume: '',
             volumePerDay: 0,
+            displayDeleteButton: false,
             errors: []
     };
   },
@@ -132,8 +137,11 @@ export default {
       axios.delete("/api/workout_sets/" + inputId)
         .then(response => {
           console.log("Success", response.data);
-          this.$router.push("/");
+          this.$router.go("/workouts/" + this.$route.params.id);
         });
+    },
+    hideShowDelete: function() {
+      this.displayDeleteButton ? this.displayDeleteButton = false : this.displayDeleteButton = true;
     }
   }
 };
