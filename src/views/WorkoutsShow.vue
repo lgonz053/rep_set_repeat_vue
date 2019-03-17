@@ -119,7 +119,7 @@ export default {
                     weight: this.newWeight
                     }
 
-      axios.post('api/workout_sets', params)
+      axios.post('/api/workout_sets', params)
         .then(response => {
           this.workout.workout_sets.push(response.data);
         }).catch(error => {
