@@ -128,6 +128,7 @@ export default {
     },
     calculate: function() {
       var workoutSet = this.workout.workout_sets;
+      this.volumePerDay = 0;
 
       for(var i = 0; i < workoutSet.length; i++) {
         var currentSet = workoutSet[i];
