@@ -74,7 +74,7 @@ export default {
     };
   },
   created: function() {
-      axios.get('api/exercises')
+      axios.get('/api/exercises')
         .then(response => {
           this.exercises = response.data;
         });
@@ -96,7 +96,7 @@ export default {
         });
     },
     getExercise: function() {
-      axios.get('api/exercises/' + this.selectedExerciseId)
+      axios.get('/api/exercises/' + this.selectedExerciseId)
         .then(response => {
           this.exercise = response.data;
         });
