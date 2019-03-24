@@ -739,6 +739,7 @@ form label.error {
 }
 
 .ptb-60 {
+
     padding-top: 30px;
     padding-bottom: 60px;
 }
@@ -2135,7 +2136,7 @@ form label.error {
 .footer {
     background-color: #f7f7f7;
     color: #323232;
-    position: relative;
+    position: absolute;
     width: 100%;
     display: block;
 }
