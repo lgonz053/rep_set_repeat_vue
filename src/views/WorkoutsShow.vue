@@ -99,7 +99,7 @@ export default {
     };
   },
   created: function() {
-    axios.get('api/exercises')
+    axios.get('/api/exercises')
       .then(response => {
         this.exercises = response.data;
       });
