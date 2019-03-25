@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-
     <div class="wrapper">
       <header id="header" class="header-transparent header--sticky header--dark" style="min-height: 84px;">
           <nav id="navigation" class="header-nav">

@@ -102,7 +102,7 @@ a, a:focus, a:active, a:link, img {
 a {
     cursor: pointer;
     text-decoration: none;
-    color: #323232;
+    color: white;
     transition: all 0.25s ease 0s;
     -moz-transition: all 0.25s ease 0s;
     -webkit-transition: all 0.25s ease 0s;
@@ -339,6 +339,7 @@ h6 {
     letter-spacing: 2px;
     line-height: 17px;
     font-weight: 600;
+    color: white;
 }
 
 h1.large {
@@ -740,6 +741,7 @@ form label.error {
 }
 
 .ptb-60 {
+    background-color: black;
     position: absolute;
     padding-top: 30px;
     padding-bottom: 30px;
@@ -2150,7 +2152,7 @@ form label.error {
     }
 
     .footer .footer-info p {
-        color: #323232;
+        color: white;
     }
 
 .footer-logo {
