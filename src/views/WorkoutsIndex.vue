@@ -54,8 +54,7 @@ export default {
       .then(response => {
         var loopTimes = 0;
 
-        if (response.data.length > 10) loopTimes = 10;
-        else loopTimes = respose.data.length
+        response.data.length > 10 ? loopTimes = 10 : loopTimes = respose.data.length;
 
         for(var i = 0; i < loopTimes; i++) {
           this.workouts.push(response.data[i]);
