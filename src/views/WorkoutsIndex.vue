@@ -52,7 +52,7 @@ export default {
   created: function() {
     axios.get('/api/workouts')
       .then(response => {
-        var loopTimes = 0;
+        var loopTimes;
 
         response.data.length > 10 ? loopTimes = 10 : loopTimes = respose.data.length;
 
