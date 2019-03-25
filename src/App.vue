@@ -34,7 +34,9 @@
         </header>
       </div>
 
-    <router-view/>
+    <div class='clearfix'>
+      <router-view/>
+    </div>
     
     <footer class="footer">
         <!-- Copyright Bar -->
@@ -42,26 +44,13 @@
                 <div class="container">
                 <!--Footer Info -->
                 <div class="row footer-info">
-                    <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="footer-block">
-                            <a class="footer-logo mb-25" href="/">
-                                <img src="dumbbell.png" />
-                            </a>
-                            <p>A workout app to track your sets and reps while also calculating your volume.</p>
-                            <ul class="social">
-                                <li><a target="_blank" href="https://www.twitter.com/"><i class="fa fa-twitter"></i></a></li>
-                                <li><a target="_blank" href="https://instagram.com/"><i class="fa fa-instagram"></i></a></li>
-                                <li><a target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="footer-block">
-                            <h6 class="link-title">Contact</h6>
-                            <p>502, DieSachbearbeiter, Schönhauser Allee, 167c10435 Berlin,Germany.</p>
+                            <h6 class="link-title">Created By:</h6>
+                            <p>Leo Gonzalez</p>
                             <ul class="link">
-                                <li><a href="mailto:yourname@domain.com"><i class="fa fa-envelope-o left"></i>yourname@domain.com</a></li>
-                                <li><a><i class="fa fa-phone left"></i>+40 (0) 012 345 6789</a></li>
+                                <li><a href="https://www.linkedin.com/in/leogonz"><i ></i>My linkedin can be found here!</a></li>
+                                <li><a href="https://github.com/lgonz053"><i></i>My Github handle is: lgonz053!</a></li>
                             </ul>
                         </div>
                     </div>
@@ -83,6 +72,11 @@
   text-align: center;
   color: #2c3e50;
 }
+
+.clearfix{
+  min-height: 650px;
+}
+
 #nav {
   padding: 30px;
 }

@@ -32,7 +32,9 @@
 </template>
 
 <style>
-  
+  .workouts-new {
+    padding-top: 150px;
+  }
 </style>
 
 <script>
