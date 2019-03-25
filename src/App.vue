@@ -34,6 +34,59 @@
         </header>
       </div>
 
+    <section id="intro">
+        <!-- Hero Slider Section -->
+        <div class="flexslider fullscreen-carousel hero-slider-1 ">
+            <ul class="slides">
+
+                <!--Slide-->
+                <li data-slide="dark-slide">
+                    <div class="slide-bg-image overlay-light parallax parallax-section1" data-background-img="img/barbell.png">
+                        <div class="js-Slide-fullscreen-height container">
+                            <div class="intro-content">
+                                <div class="intro-content-inner">
+                                    <h2 class="h2">Welcome to Rep Set Repeat</h2>
+                                    <p class="lead">An app where you can track your workouts</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <!--Slide-->
+                <li data-slide="light-slide">
+                    <div class="slide-bg-image overlay-dark dark-bg parallax parallax-section1" data-background-img="img/dark-dumbbell.jpg">
+                        <div class="js-Slide-fullscreen-height container">
+                            <div class="intro-content">
+                                <div class="intro-content-inner">
+                                    <h2 class="h2">Input your Sets</h2>
+                                    <p class="lead">Rep it out...Next Set</p>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <!--Slide-->
+                <li data-slide="dark-slide">
+                    <div class="slide-bg-image overlay-light parallax parallax-section1" data-background-img="img/dark-equipment.jpg">
+                        <div class="js-Slide-fullscreen-height container">
+                            <div class="intro-content">
+                                <div class="intro-content-inner">
+                                    <h2 class="h2">Rep...and..Repeat</h2>
+                                    <p class="lead">Still your set...</p>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- End Hero Slider Section -->
+    </section>
+
     <div class='clearfix'>
       <router-view/>
     </div>
