@@ -26,7 +26,7 @@
         <option v-bind:value="0.75">45 Minutes</option>
       </select>
 
-      <input type="submit" value="Update">
+      <input type="submit" value="Create New Workout">
     </form>
   </div>
 </template>
@@ -55,9 +55,10 @@ export default {
   created: function() {},
   methods: {
     submit: function() {
+      console.log(parseInt(this.selectedMinute))
       var params = {
                     muscle_group: this.newMuscleGroup,
-                    time_limit: parseInt(this.selectedHour) + parseInt(this.selectedMinute)
+                    time_limit: parseFloat(this.selectedHour) + parseFloat(this.selectedMinute)
                    };
 
       axios.post("/api/workouts", params)
