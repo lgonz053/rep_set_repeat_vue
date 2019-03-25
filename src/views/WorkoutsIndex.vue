@@ -71,8 +71,11 @@ export default {
       axios.get('/api/workouts')
         .then(response => {
             var currentWorkouts = [];
+            let loopTimes;
+        
+            response.data.length < 10 ? loopTimes = response.data.length : loopTimes = 10;
 
-            for(var i = 0; i < 10; i++) {
+            for(var i = 0; i < loopTimes; i++) {
               var currentWorkout = response.data[i];
                 currentWorkouts.push(currentWorkout);
             } 
