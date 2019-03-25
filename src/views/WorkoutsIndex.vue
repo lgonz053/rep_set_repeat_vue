@@ -52,10 +52,9 @@ export default {
   created: function() {
     axios.get('/api/workouts')
       .then(response => {
-        // for(var i = 0; i < 10; i++) {
-        //   this.workouts.push(response.data[i]);
-        // }
-        this.workouts = response.data
+        for(var i = 0; i < 10; i++) {
+          this.workouts.push(response.data[i]);
+        }
       }).catch(error => {
         this.$router.push("/login");    
       });
@@ -64,41 +63,41 @@ export default {
     moment: function(date) {
       return moment(date);
     },
-    // recentWorkouts: function() {
-    //   axios.get('/api/workouts')
-    //     .then(response => {
-    //         var currentWorkouts = [];
+    recentWorkouts: function() {
+      axios.get('/api/workouts')
+        .then(response => {
+            var currentWorkouts = [];
 
-    //         for(var i = 0; i < 10; i++) {
-    //           var currentWorkout = response.data[i];
-    //             currentWorkouts.push(currentWorkout);
-    //         } 
-    //         this.workouts = currentWorkouts
-    //     });
-    // },
-    // allWorkouts: function() {
-    //   console.log('All Workouts')
-    //   axios.get('/api/workouts')
-    //     .then(response => {
-    //       this.workouts = response.data;
-    //     });
-    // },
-    // sortByBodyPart: function(muscleGroupWanted) {
-    //   axios.get('/api/workouts')
-    //   .then(response => {
-    //     var muscleGroups = [];
+            for(var i = 0; i < 10; i++) {
+              var currentWorkout = response.data[i];
+                currentWorkouts.push(currentWorkout);
+            } 
+            this.workouts = currentWorkouts
+        });
+    },
+    allWorkouts: function() {
+      console.log('All Workouts')
+      axios.get('/api/workouts')
+        .then(response => {
+          this.workouts = response.data;
+        });
+    },
+    sortByBodyPart: function(muscleGroupWanted) {
+      axios.get('/api/workouts')
+      .then(response => {
+        var muscleGroups = [];
 
-    //     for(var i = 0; i < response.data.length; i++) {
-    //       var currentWorkout = response.data[i];
+        for(var i = 0; i < response.data.length; i++) {
+          var currentWorkout = response.data[i];
 
-    //       if(currentWorkout.muscle_group === muscleGroupWanted) {
-    //         muscleGroups.push(currentWorkout);
-    //       }
+          if(currentWorkout.muscle_group === muscleGroupWanted) {
+            muscleGroups.push(currentWorkout);
+          }
           
-    //       this.workouts = muscleGroups
-    //     }
-    //   });
-    // }
+          this.workouts = muscleGroups
+        }
+      });
+    }
   }
 };
 </script>
