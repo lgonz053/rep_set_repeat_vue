@@ -51,10 +51,6 @@
                               <div class="nav-icon-item d-lg-none">
                                   <span class="nav-icon-trigger menu-mobile-btn align-middle"><i class="ion"></i></span>
                               </div>
-
-                              <div class="nav-icon-item">
-                                  <span class="nav-icon-trigger sidebar-menu_btn align-middle"><i class="ion ion-navicon"></i></span>
-                              </div>
                           </div>
                   </div>
               </div>
