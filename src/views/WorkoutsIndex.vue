@@ -33,13 +33,12 @@
                 </ul>
             </div>
             <!-- End work Filter -->
-
             <div class="row container-grid nf-col-3">
 
                 <div class="nf-item branding coffee spacing" v-for="workout in workouts">
                     <div class="item-box">
                         <router-link v-bind:to="'/workouts/' + workout.id">
-                            <img alt="1" src="img/portfolio/1.jpg" class="item-container">
+                            <img alt="1" src="img/plate.jpg" class="item-container">
                             <div class="item-mask">
                                 <div class="item-caption">
                                     <h5 class="white">{{ workout.muscle_group }}</h5>
@@ -50,19 +49,18 @@
                         </router-link>
                     </div>
                 </div>
-
-            </div>
+              </div>
         </div>
 
     </section>
     <!-- End Work Section -->
-
   </div>
 </template>
 
 <style>
 .workouts-index{
   padding: 20px;
+  min-height: 1560px;
   background-color: grey;
 }
 .workouts-index h1{
