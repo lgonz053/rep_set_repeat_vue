@@ -1,5 +1,24 @@
 <template>
   <div id="app">
+    <div class="sidebar-menu">
+        <div class="sidembar-menu-wrap">
+            <a href="javascript:void(0)" class="sidebar-close-icon icon--close">
+                <i class="ion ion-android-close"></i>
+            </a>
+            <!--Sidebar Content-->
+            <div class="sidebar-content">
+                <ul>
+                    <li><router-link to="/">Workouts</router-link></li>
+                    <li><router-link to="/workouts/new">New Workout</router-link></li>       
+                    <li><router-link to="/exercises/new">New Exercise</router-link></li>
+                    <li><router-link to="/login">Login</router-link></li>
+                    <li><router-link to="/logout">Logout</router-link></li>
+                    <li><router-link to="/signup">Sign Up</router-link></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <div class="wrapper">
       <header id="header" class="header-transparent header--sticky header--dark" style="min-height: 84px;">
           <nav id="navigation" class="header-nav">
@@ -27,6 +46,16 @@
                               </li>
                           </ul>
                       </div>
+
+                          <div class="nav-icons">
+                              <div class="nav-icon-item d-lg-none">
+                                  <span class="nav-icon-trigger menu-mobile-btn align-middle"><i class="ion"></i></span>
+                              </div>
+
+                              <div class="nav-icon-item">
+                                  <span class="nav-icon-trigger sidebar-menu_btn align-middle"><i class="ion ion-navicon"></i></span>
+                              </div>
+                          </div>
                   </div>
               </div>
           </nav>
