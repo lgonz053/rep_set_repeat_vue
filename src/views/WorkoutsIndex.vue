@@ -63,13 +63,6 @@
   min-height: 1560px;
   background-color: #404040;
 }
-.workouts-index h1{
-  text-decoration: underline;
-}
-.workouts-index h3{
-  text-align: center;
-
-}
 </style>
 
 <script>

@@ -3,7 +3,7 @@
 
     <h1>Current Workout</h1>
     
-    <div>
+    <div class="font">
       Exercise Name:
 
       <select v-model="selectedExerciseId" id="names">
@@ -33,14 +33,16 @@
       <span v-if="displayDeleteButton">
         <button type="click" v-on:click="destroySet(workout_set.id)">Delete Set</button>
       </span>
-      {{ workout_set.exercise.name }} |
-      Set: {{ workout_set.groups }} |
-      Reps: {{ workout_set.reps }} |
-      Weight: {{ workout_set.weight }} |
-      Volume: {{ workout_set.total_volume }} |
+      <div class="font">
+        {{ workout_set.exercise.name }} |
+        Set: {{ workout_set.groups }} |
+        Reps: {{ workout_set.reps }} |
+        Weight: {{ workout_set.weight }} |
+        Volume: {{ workout_set.total_volume }} |
+      </div>
     </div>
 
-    <div>
+    <div class="font">
       <button v-on:click="calculate()">Calculate Total Volume</button>
       Total Volume Today: {{ volumePerDay }}
     </div>
@@ -52,6 +54,16 @@
     </div>
   </div>
 </template>
+
+<style>
+  .workouts-show{
+    padding: 100px;
+  }
+
+  .font {
+    color: white;
+  }
+</style>
 
 <script>
 var axios = require('axios');

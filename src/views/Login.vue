@@ -20,6 +20,16 @@
   </div>
 </template>
 
+<style>
+  .form-group {
+    color: white;
+  }
+
+  .login {
+    padding-top: 150px;
+  }
+</style>
+
 <script>
 import axios from "axios";
 

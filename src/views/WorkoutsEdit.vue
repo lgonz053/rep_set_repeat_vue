@@ -6,7 +6,7 @@
         <li v-for="error in errors">{{ error }}</li>
       </ul>
 
-      <form v-on:submit.prevent="submit()">
+      <form class="font" v-on:submit.prevent="submit()">
         <div>Muscle Groups To Choose From:</div>
         <div>Legs | Chest | Back | Shoulders | Biceps | Triceps | Abs | Cardio</div><br>
 
@@ -25,9 +25,14 @@
 </template>
 
 <style>
-  
-</style>
+  .workouts-edit {
+    padding-top: 210px;
+  }
 
+  .font {
+    color: white;
+  }  
+</style>
 <script>
 var axios = require('axios');
 

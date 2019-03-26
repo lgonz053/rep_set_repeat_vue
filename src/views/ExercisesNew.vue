@@ -2,22 +2,24 @@
   <div class="exercises-new">
     <h1>Create a new exercise</h1>
 
-    <form v-on:submit.prevent="submit()">
-      <div>
-        Name: <input v-model="newExerciseName">
-      </div>
+    <div class="font">
+      <form v-on:submit.prevent="submit()">
+        <div>
+          Name: <input v-model="newExerciseName">
+        </div>
 
-      <div>
-        Description: <input v-model="newExerciseDescription">
-      </div>
+        <div>
+          Description: <input v-model="newExerciseDescription">
+        </div>
 
-      <div>
-        Video Url (optional): <input v-model="newExerciseUrl">
-      </div>
-      <input type="submit" value="Create">
-    </form>
+        <div>
+          Video Url (optional): <input v-model="newExerciseUrl">
+        </div>
+        <input type="submit" value="Create">
+      </form>
+    </div>
 
-    <div>
+    <div class="font">
       <h2>Edit Exercise:</h2>
 
       <select v-model="selectedExerciseId" v-on:change="getExercise()">
@@ -47,6 +49,13 @@
 </template>
 
 <style>
+h2 {
+  color: #e6ae49 !important;
+}
+
+.font {
+    color: white;
+  }
 </style>
 
 <script>

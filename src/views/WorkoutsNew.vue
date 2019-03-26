@@ -5,7 +5,7 @@
       <li v-for="error in errors">{{ error }}</li>
     </ul>
 
-    <form v-on:submit.prevent="submit()">
+    <form class="font" v-on:submit.prevent="submit()">
       <div>Muscle Groups To Choose From:</div>
       <div>Legs | Chest | Back | Shoulders | Biceps | Triceps | Abs | Cardio</div><br>
 
@@ -33,7 +33,15 @@
 
 <style>
   .workouts-new {
-    padding-top: 150px;
+    padding-top: 190px;
+  }
+
+  h1, h3 {
+    color: #e6ae49 !important;
+  }
+
+  .font {
+    color: white;
   }
 </style>
 

@@ -28,6 +28,12 @@
 </div>
 </template>
 
+<style>
+  .sign-up {
+    padding-top: 60px;
+  }
+</style>
+
 <script>
 import axios from "axios";
 
