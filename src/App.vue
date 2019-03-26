@@ -46,12 +46,11 @@
                               </li>
                           </ul>
                       </div>
-
-                          <div class="nav-icons">
-                              <div class="nav-icon-item d-lg-none">
-                                  <span class="nav-icon-trigger menu-mobile-btn align-middle"><i class="ion"></i></span>
-                              </div>
-                          </div>
+                        <div class="nav-icons">
+                            <div class="nav-icon-item d-lg-none">
+                                <span class="nav-icon-trigger menu-mobile-btn align-middle"><i class="ion"></i></span>
+                            </div>
+                        </div>
                   </div>
               </div>
           </nav>
@@ -94,12 +93,26 @@
 
                 <!--Slide-->
                 <li data-slide="dark-slide">
-                    <div class="slide-bg-image overlay-light parallax parallax-section1" data-background-img="img/dark-equipment.jpg">
+                    <div class="slide-bg-image overlay-light parallax parallax-section1" data-background-img="img/backshot.jpg">
                         <div class="js-Slide-fullscreen-height container">
                             <div class="intro-content">
                                 <div class="intro-content-inner">
                                     <h2 class="h2">"I always say to myself right before a tough set in the gym, Ain't nothin' to it, but to do it."</h2>
                                     <p class="lead">- Ronnie Coleman</p>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li data-slide="light-slide">
+                    <div class="slide-bg-image overlay-light parallax parallax-section1" data-background-img="img/dark-equipment.jpg">
+                        <div class="js-Slide-fullscreen-height container">
+                            <div class="intro-content">
+                                <div class="intro-content-inner">
+                                    <h2 class="h2">“Do not pray for an easy life, pray for the strength to endure a difficult one”</h2>
+                                    <p class="lead">– Bruce Lee</p>
                                     <br />
                                 </div>
                             </div>
@@ -127,7 +140,7 @@
                             <p>Leo Gonzalez</p>
                             <ul class="link">
                                 <li><a href="https://www.linkedin.com/in/leogonz"><i ></i>My linkedin can be found here!</a></li>
-                                <li><a href="https://github.com/lgonz053"><i></i>My Github handle is: lgonz053!</a></li>
+                                <li><a href="https://github.com/lgonz053"><i></i>My Github handle is: lgonz053</a></li>
                             </ul>
                         </div>
                     </div>
