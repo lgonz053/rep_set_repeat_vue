@@ -5,17 +5,17 @@
     <div class="font">
       <form v-on:submit.prevent="submit()">
         <div>
-          Name: <input v-model="newExerciseName">
+          Name: <input class="nameText" v-model="newExerciseName">
         </div>
 
         <div>
-          Description: <input v-model="newExerciseDescription">
+          Description: <input class="description" v-model="newExerciseDescription">
         </div>
 
         <div>
-          Video Url (optional): <input v-model="newExerciseUrl">
+          Video Url (optional): <input class="videoUrl1" v-model="newExerciseUrl">
         </div>
-        <input type="submit" value="Create">
+        <button type="submit">Create</button>
       </form>
     </div>
 
@@ -27,28 +27,34 @@
       </select>
 
       <form v-on:submit.prevent="editExercise()">
-        Name: {{ exercise.name }}<br>
-        Description: {{ exercise.description }}<br>
-        Video Url: {{ exercise.video_url }}
+        <div class="descriptionText">
+          Name: {{ exercise.name }}<br>
+          Description: {{ exercise.description }}<br>
+          Video Url: {{ exercise.video_url }}
+        </div>
         <div>
-          Name: <input v-model="exercise.name">
+          Name: <input class="nameText2" v-model="exercise.name">
         </div>
 
         <div>
-          Description: <input v-model="exercise.description">
+          Description: <input class="description2" v-model="exercise.description">
         </div>
 
         <div>
-          Video Url: <input v-model="exercise.video_url">
+          Video Url: <input class="videoUrl2" v-model="exercise.video_url">
         </div>
 
-        <input type="submit" value="Edit Exercise">
+        <button type="submit">Edit Exercise</button>
       </form>
     </div>
   </div>
 </template>
 
 <style>
+.exercises-new{
+  margin-top: 35px;
+}
+
 h2 {
   color: #e6ae49 !important;
 }
@@ -56,6 +62,43 @@ h2 {
 .font {
     color: white;
   }
+
+ input, select {
+   margin-bottom: 20px;
+   font-family: 'Raleway', sans-serif;
+   font-size: 12px;
+   border-radius: 2px;
+   background: white;
+   padding: 4px; 
+   width: 250px;
+   height: 25px;
+ }
+
+ .nameText {
+  margin-left: 114px;
+ }
+
+ .videoUrl1 {
+  margin-left: 20px;
+ }
+
+ .description {
+  margin-left: 75px;
+ }
+
+ .descriptionText {
+  margin-bottom: 30px;
+  margin-right: 250px;
+  margin-left: 250px;
+ }
+
+ .nameText2 {
+  margin-left: 36px;
+ }
+
+ .videoUrl2 {
+  margin-left: 14px;
+ }
 </style>
 
 <script>

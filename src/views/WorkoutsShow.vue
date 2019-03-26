@@ -12,35 +12,33 @@
 
       <form v-on:submit.prevent="submit()">
         <div>
-          Set: <input v-model="newSet">
+          Set: <input class="input1" v-model="newSet">
         </div>
 
         <div>
-          Reps: <input v-model="newReps">
+          Reps: <input class="input2" v-model="newReps">
         </div>
 
         <div>
-          Weight: <input v-model="newWeight">
+          Weight: <input class="input3" v-model="newWeight">
         </div>
 
-      <input type="submit" value="Create Set">
+      <button class="createButton" type="submit">Create</button>
       </form>
     </div>
 
-    <button v-on:click="hideShowDelete()">Edit Sets</button>
-
-    <div v-for="workout_set in workout.workout_sets">
-      <span v-if="displayDeleteButton">
-        <button type="click" v-on:click="destroySet(workout_set.id)">Delete Set</button>
-      </span>
-      <div class="font">
+    <div class="font" v-for="workout_set in workout.workout_sets">
         {{ workout_set.exercise.name }} |
         Set: {{ workout_set.groups }} |
         Reps: {{ workout_set.reps }} |
         Weight: {{ workout_set.weight }} |
         Volume: {{ workout_set.total_volume }} |
-      </div>
+      <span v-if="displayDeleteButton">
+        <button class="deleteButton" type="click" v-on:click="destroySet(workout_set.id)">Delete Set</button>
+      </span>
     </div>
+
+    <button class="createButton" v-on:click="hideShowDelete()">Edit Sets</button>
 
     <div class="font">
       <button v-on:click="calculate()">Calculate Total Volume</button>
@@ -62,6 +60,37 @@
 
   .font {
     color: white;
+  }
+
+  input, select {
+    margin-bottom: 20px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px;
+    border-radius: 2px;
+    background: white;
+    padding: 4px; 
+    width: 250px;
+    height: 25px;
+  }
+
+    .input1 {
+      margin-left: 75px;
+    }
+
+    .input2 {
+      margin-left: 65px;
+    }
+
+    .input3 {
+      margin-left: 49px;
+    }
+
+  .deleteButton {
+    margin-left: 20px 
+  }
+
+  .createButton {
+    margin-bottom: 40px;
   }
 </style>
 
