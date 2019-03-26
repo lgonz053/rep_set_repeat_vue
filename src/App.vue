@@ -45,7 +45,7 @@
                             <div class="intro-content">
                                 <div class="intro-content-inner">
                                     <h2 class="h2">Welcome to Rep Set Repeat</h2>
-                                    <p class="lead">An app where you can track your workouts</p>
+                                    <p class="lead">“There are no shortcuts—everything is reps, reps, reps.” - Arnold Schwarzenegger</p>
                                 </div>
                             </div>
                         </div>
@@ -58,8 +58,8 @@
                         <div class="js-Slide-fullscreen-height container">
                             <div class="intro-content">
                                 <div class="intro-content-inner">
-                                    <h2 class="h2">Input your Sets</h2>
-                                    <p class="lead">Rep it out...Next Set</p>
+                                    <h2 class="h2">“If I have to die tonight, if this weight is going to kill me tonight then so be it, I am dying where I wanna be.”</h2>
+                                    <p class="lead">- Kai Greene</p>
                                     <br />
                                 </div>
                             </div>
@@ -73,8 +73,8 @@
                         <div class="js-Slide-fullscreen-height container">
                             <div class="intro-content">
                                 <div class="intro-content-inner">
-                                    <h2 class="h2">Rep...and..Repeat</h2>
-                                    <p class="lead">Still your set...</p>
+                                    <h2 class="h2">"I always say to myself right before a tough set in the gym, Ain't nothin' to it, but to do it."</h2>
+                                    <p class="lead">- Ronnie Coleman</p>
                                     <br />
                                 </div>
                             </div>
