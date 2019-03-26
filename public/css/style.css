@@ -3632,17 +3632,17 @@ form label.error {
         display: inline-block;
     }
 
-    .item-box:hover .item-mask {
+    .item-box .item-mask {
         opacity: 1;
         visibility: visible;
     }
 
-        .item-box:hover .item-mask .item-caption {
+        .item-box .item-mask .item-caption {
             bottom: 30px;
             opacity: 1;
         }
 
-    .item-box:hover .item-container {
+    .item-box .item-container {
         transform: scale(1.1);
         transition: all 2s cubic-bezier(0.23, 1, 0.32, 1) 0s;
         width: 100%;

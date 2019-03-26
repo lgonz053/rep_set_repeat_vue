@@ -61,7 +61,7 @@
 .workouts-index{
   padding: 20px;
   min-height: 1560px;
-  background-color: grey;
+  background-color: #404040;
 }
 .workouts-index h1{
   text-decoration: underline;
