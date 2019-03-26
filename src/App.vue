@@ -126,7 +126,7 @@
 }
 
 .clearfix{
-  min-height: 650px;
+  min-height: 700px;
 }
 
 #nav {
