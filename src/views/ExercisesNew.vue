@@ -2,36 +2,79 @@
   <div class="exercises-new">
     <h1>Create a new exercise</h1>
 
-    <div class="font">
-      <form v-on:submit.prevent="submit()">
-        <div>
-          Name: <input class="nameText" v-model="newExerciseName">
-        </div>
+    <div class="font row form-spacer">
+      <form v-on:submit.prevent="submit()" class="contact-form col-4 offset-4" id="contact" role="form" novalidate="novalidate">
 
-        <div>
-          Description: <input class="description" v-model="newExerciseDescription">
-        </div>
+          <!-- MAIL SENDING UNSUCCESSFULL -->
+          <h6 class="errorContent" v-for="error in errors">
+              <i class="fa fa-exclamation-circle left" style="color: #e1534f;"></i>{{ error }}
+          </h6>
+          <!-- END MAIL SENDING UNSUCCESSFULL -->
+          <div class="mt-5"></div>
 
-        <div>
-          Video Url (optional): <input class="videoUrl1" v-model="newExerciseUrl">
-        </div>
-        <button type="submit">Create</button>
+          <div class="form-field-wrapper row">
+              <label class="col-4" for="new-exercise-name">Exercise Name: </label>
+              <input class="input-sm col-8 form-full" id="new-exercise-name" type="text" v-model="newExerciseName">
+          </div>
+
+          <div class="form-field-wrapper row">
+              <label class="col-4" for="new-description">Description: </label>
+              <input class="input-sm col-8 form-full" id="new-description" type="number" v-model="newExerciseDescription">
+          </div>
+
+          <div class="form-field-wrapper row">
+              <label class="col-4" for="new-video-url">Video Url (optional): </label>
+              <input class="input-sm col-8 form-full" id="new-video-url" type="number" v-model="newExerciseUrl">
+          </div>
+
+          <div class="row">
+            <button class="btn btn-md btn-color-b form-full col-6 offset-3" type="submit" id="form-submit" name="submit">Create</button>
+          </div>
       </form>
+
+
     </div>
 
-    <div class="font">
-      <h2>Edit Exercise:</h2>
 
-      <select v-model="selectedExerciseId" v-on:change="getExercise()">
+      <h1 class="mt-5">Edit Exercise</h1>
+
+      <div class="font row form-spacer mt-5 pb-5">
+        <form v-on:submit.prevent="editExercise()" class="contact-form col-4 offset-4" id="contact" role="form" novalidate="novalidate">
+
+            <div class="form-field-wrapper row">
+              <label class="col-4">Pick Exercise to Edit: </label>
+              <select class="input-sm col-8 form-full" v-model="selectedExerciseId" v-on:change="getExercise()">
+                <option v-for="exercise in exercises" v-bind:value="exercise.id">{{ exercise.name }}</option>
+              </select>
+            </div>
+
+            <div class="form-field-wrapper row">
+                <label class="col-4" for="edit-exercise-name">Exercise Name: </label>
+                <input class="input-sm col-8 form-full" id="edit-exercise-name" type="text" v-model="exercise.name">
+            </div>
+
+            <div class="form-field-wrapper row">
+                <label class="col-4" for="edit-description">Description: </label>
+                <textarea class="input-sm col-8 form-full" id="edit-description" rows="15" type="number" v-model="exercise.description">
+                </textarea>
+            </div>
+
+            <div class="form-field-wrapper row">
+                <label class="col-4" for="edit-video-url">Video Url (optional): </label>
+                <input class="input-sm col-8 form-full" id="edit-video-url" type="number" v-model="exercise.video_url">
+            </div>
+
+            <div class="row">
+              <button class="btn btn-md btn-color-b form-full col-6 offset-3" type="submit" id="form-submit" name="submit">Edit Exercise</button>
+            </div>
+        </form>
+
+      <!-- <select v-model="selectedExerciseId" v-on:change="getExercise()">
         <option v-for="exercise in exercises" v-bind:value="exercise.id">{{ exercise.name }}</option>
       </select>
 
       <form v-on:submit.prevent="editExercise()">
-        <div class="descriptionText">
-          Name: {{ exercise.name }}<br>
-          Description: {{ exercise.description }}<br>
-          Video Url: {{ exercise.video_url }}
-        </div>
+
         <div>
           Name: <input class="nameText2" v-model="exercise.name">
         </div>
@@ -45,7 +88,7 @@
         </div>
 
         <button type="submit">Edit Exercise</button>
-      </form>
+      </form> -->
     </div>
   </div>
 </template>

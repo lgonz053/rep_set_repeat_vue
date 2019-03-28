@@ -1,33 +1,49 @@
 <template>
   <div class="workouts-new">
     <h1>New Workout</h1>
-    <ul>
-      <li v-for="error in errors">{{ error }}</li>
-    </ul>
 
-    <form class="font" v-on:submit.prevent="submit()">
-      <div>Muscle Groups To Choose From:</div>
-      <div>Legs | Chest | Back | Shoulders | Biceps | Triceps | Abs | Cardio</div><br>
+    <div class="font row form-spacer">
+      <form v-on:submit.prevent="submit()" class="contact-form col-4 offset-4" id="contact" role="form" novalidate="novalidate">
 
-      <div>
-        Muscle Group: <input v-model="newMuscleGroup">
-      </div>
+          <!-- MAIL SENDING UNSUCCESSFULL -->
+          <h6 class="errorContent" v-for="error in errors">
+              <i class="fa fa-exclamation-circle left" style="color: #e1534f;"></i>{{ error }}
+          </h6>
+          <!-- END MAIL SENDING UNSUCCESSFULL -->
+          <div>Muscle Groups To Choose From:</div>
+          <div>Legs | Chest | Back | Shoulders | Biceps | Triceps | Abs | Cardio</div>
+          <div class="mt-5"></div>
 
-      <h3>Time Limit</h3>
+          <div class="form-field-wrapper row">
+              <label class="col-4" for="muscle-group">Muscle Group: </label>
+              <input class="input-sm col-8 form-full" id="muscle-group" type="number" v-model="newMuscleGroup">
+          </div>
 
-      <select v-model="selectedHour">
-        <option v-for="hour in hours" v-bind:value="hour">{{ hour }} Hours</option>
-      </select>
+          <div class="form-field-wrapper row">
+              <label class="col-4" for="new-hour">Hour: </label>
+              <select class="input-sm col-8 form-full" id="new-hour" type="number" v-model="selectedHour">
+                <option v-for="hour in hours" v-bind:value="hour">{{ hour }} Hours</option>
+              </select>
+          </div>
 
-      <select v-model="selectedMinute" v-on:change="hoursMinutes()">
-        <option v-bind:value="0">00 Minutes</option>
-        <option v-bind:value="0.25">15 Minutes</option>
-        <option v-bind:value="0.5">30 Minutes</option>
-        <option v-bind:value="0.75">45 Minutes</option>
-      </select>
+          <div class="form-field-wrapper row">
+              <label class="col-4" for="new-minute">Minutes: </label>
 
-      <input type="submit" value="Create New Workout">
-    </form>
+              <select class="input-sm col-8 form-full" id="new-minute" type="number" v-model="selectedMinute" v-on:change="hoursMinutes()">
+                <option v-bind:value="0">00 Minutes</option>
+                <option v-bind:value="0.25">15 Minutes</option>
+                <option v-bind:value="0.5">30 Minutes</option>
+                <option v-bind:value="0.75">45 Minutes</option>
+              </select>
+          </div>
+
+          <div class="row">
+            <button class="btn btn-md btn-color-b form-full col-6 offset-4" type="submit" id="form-submit" name="submit">Create New Workout</button>
+          </div>
+      </form>
+
+
+    </div>
   </div>
 </template>
 

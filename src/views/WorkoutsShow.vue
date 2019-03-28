@@ -3,53 +3,81 @@
 
     <h1>Current Workout</h1>
     
-    <div class="font">
-      Exercise Name:
+    
+    <div class="font row form-spacer">
+      <form v-on:submit.prevent="submit()" class="contact-form col-4 offset-4" id="contact" role="form" novalidate="novalidate">
 
-      <select v-model="selectedExerciseId" id="names">
-        <option v-for="exercise in exercises" v-bind:value="exercise.id">{{ exercise.name }}</option>
-      </select>
+          <!-- MAIL SENDING UNSUCCESSFULL -->
+          <h6 class="errorContent" v-for="error in errors">
+              <i class="fa fa-exclamation-circle left" style="color: #e1534f;"></i>{{ error }}
+          </h6>
+          <!-- END MAIL SENDING UNSUCCESSFULL -->
 
-      <form v-on:submit.prevent="submit()">
-        <div>
-          Set: <input class="input1" v-model="newSet">
-        </div>
+          <div class="form-field-wrapper row">
+              <label class="col-4" for="exercise-name">Exercise Name:</label>
+              <select class="input-sm col-8 form-full" v-model="selectedExerciseId" id="exercise-name">
+                <option v-for="exercise in exercises" v-bind:value="exercise.id">{{ exercise.name }}</option>
+              </select>
+          </div>
 
-        <div>
-          Reps: <input class="input2" v-model="newReps">
-        </div>
+          <div class="form-field-wrapper row">
+              <label class="col-4" for="new-set">Set: </label>
+              <input class="input-sm col-8 form-full" id="new-set" type="number" v-model="newSet">
+          </div>
 
-        <div>
-          Weight: <input class="input3" v-model="newWeight">
-        </div>
+          <div class="form-field-wrapper row">
+              <label class="col-4" for="new-reps">Reps: </label>
+              <input class="input-sm col-8 form-full" id="new-reps" type="number" v-model="newReps">
+          </div>
 
-      <button class="createButton" type="submit">Create</button>
+          <div class="form-field-wrapper row">
+              <label class="col-4" for="new-weight">Weight: </label>
+              <input class="input-sm col-8 form-full" id="new-weight" type="number" v-model="newWeight">
+          </div>
+
+          <button class="btn btn-md btn-color-b form-full" type="submit" id="form-submit" name="submit">Create</button>
       </form>
+
     </div>
 
-    <div class="font" v-for="workout_set in workout.workout_sets">
-        {{ workout_set.exercise.name }} |
-        Set: {{ workout_set.groups }} |
-        Reps: {{ workout_set.reps }} |
-        Weight: {{ workout_set.weight }} |
-        Volume: {{ workout_set.total_volume }} |
-      <span v-if="displayDeleteButton">
-        <button class="deleteButton" type="click" v-on:click="destroySet(workout_set.id)">Delete Set</button>
-      </span>
-    </div>
 
-    <button class="createButton" v-on:click="hideShowDelete()">Edit Sets</button>
+    <table class="table table-hover table-dark mt-5">
+      <thead>
+        <tr>
+          <th scope="col">Exercise</th>
+          <th scope="col">Sets</th>
+          <th scope="col">Reps</th>
+          <th scope="col">Weight</th>
+          <th scope="col">Volume</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="workout_set in workout.workout_sets">
+          <th scope="row">{{ workout_set.exercise.name }}</th>
+          <td>{{ workout_set.groups }}</td>
+          <td>{{ workout_set.reps }}</td>
+          <td>{{ workout_set.weight }}</td>
+          <td>{{ workout_set.total_volume }}</td>
+          <td class="font-color-b" v-on:click="destroySet(workout_set)" >Delete Set</td>
+        </tr>
+      </tbody>
+    </table>
 
-    <div class="font">
-      <button v-on:click="calculate()">Calculate Total Volume</button>
-      Total Volume Today: {{ volumePerDay }}
-    </div>
 
-    <div>
-      <router-link v-bind:to="'/workouts/' + workout.id + '/edit'">
-        <button>Edit Workout</button>
+    <div class="font row">
+      <div class="col-4">
+        <button class="btn btn-md btn-color-b" v-on:click="hideShowDelete()">Edit Sets</button>
+      </div>
+      <router-link class="col-4" v-bind:to="'/workouts/' + workout.id + '/edit'">
+        <button class="btn btn-md btn-color-b">Edit Workout</button>
       </router-link>
+      <div class="col-4">
+          <button class="btn btn-md btn-color-b" v-on:click="calculate()">Calculate Total Volume</button>
+          Total Volume Today: {{ volumePerDay }}
+      </div>
     </div>
+
   </div>
 </template>
 
@@ -60,6 +88,14 @@
 
   .font {
     color: white;
+  }
+
+  .form-spacer {
+    margin-top: 30px;
+  }
+
+  .font-color-b {
+    color: #e6ae49;
   }
 
   input, select {
@@ -91,6 +127,10 @@
 
   .createButton {
     margin-bottom: 40px;
+  }
+
+  .form-full {
+    height: 30px;
   }
 </style>
 
@@ -176,11 +216,12 @@ export default {
         this.volumePerDay += currentSet['total_volume'];
       }
     },
-    destroySet: function(inputId) {
-      axios.delete("/api/workout_sets/" + inputId)
+    destroySet: function(inputWorkOut) {
+      axios.delete("/api/workout_sets/" + inputWorkOut.id)
         .then(response => {
           console.log("Success", response.data);
-          this.$router.go("/workouts/" + this.$route.params.id);
+          var index = this.workout.workout_sets.indexOf(inputWorkOut);
+          this.workout.workout_sets.splice(index, 1);
         });
     },
     hideShowDelete: function() {

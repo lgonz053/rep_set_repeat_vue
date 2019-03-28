@@ -2,25 +2,36 @@
   <div class="workouts-edit">
       <h1>Edit Workout</h1>
 
-      <ul>
-        <li v-for="error in errors">{{ error }}</li>
-      </ul>
+      <div class="font row form-spacer">
+        <form v-on:submit.prevent="submit()" class="contact-form col-4 offset-4" id="contact" role="form" novalidate="novalidate">
 
-      <form class="font" v-on:submit.prevent="submit()">
-        <div>Muscle Groups To Choose From:</div>
-        <div>Legs | Chest | Back | Shoulders | Biceps | Triceps | Abs | Cardio</div><br>
+            <!-- MAIL SENDING UNSUCCESSFULL -->
+            <h6 class="errorContent" v-for="error in errors">
+                <i class="fa fa-exclamation-circle left" style="color: #e1534f;"></i>{{ error }}
+            </h6>
+            <!-- END MAIL SENDING UNSUCCESSFULL -->
+            <div>Muscle Groups To Choose From:</div>
+            <div>Legs | Chest | Back | Shoulders | Biceps | Triceps | Abs | Cardio</div>
+            <div class="mt-5"></div>
 
-        <div>
-          Muscle Group: <input v-model="workout.muscle_group">
-        </div>
+            <div class="form-field-wrapper row">
+                <label class="col-4" for="muscle-group">Muscle Group: </label>
+                <input class="input-sm col-8 form-full" id="muscle-group" type="number" v-model="workout.muscle_group">
+            </div>
 
-        <div>
-          Time Limit: <input v-model="workout.time_limit">
-        </div>
+            <div class="form-field-wrapper row">
+                <label class="col-4" for="time-limit">Time Limit: </label>
+                <input class="input-sm col-8 form-full" id="time-limit" type="number" v-model="workout.time_limit">
+            </div>
 
-        <input type="submit" value="Update">
-        <button type="submit" value="Delete" v-on:click="destroyWorkout(workout.id)">Delete</button>
-      </form>
+            <div class="row">
+              <button class="btn btn-md btn-color-b form-full col-4 offset-2" type="submit" id="form-submit" name="submit">Update</button>
+              <button class="btn btn-md btn-color-b form-full col-4 offset-1" v-on:click="destroyWorkout(workout.id)">Delete</button>
+            </div>
+        </form>
+
+
+      </div>
   </div>
 </template>
 
