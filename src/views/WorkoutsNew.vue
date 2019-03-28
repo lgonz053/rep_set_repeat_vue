@@ -16,12 +16,12 @@
 
           <div class="form-field-wrapper row">
               <label class="col-4" for="muscle-group">Muscle Group: </label>
-              <input class="input-sm col-8 form-full" id="muscle-group" type="number" v-model="newMuscleGroup">
+              <input class="input-sm col-8 form-full" id="muscle-group" type="text" v-model="newMuscleGroup">
           </div>
 
           <div class="form-field-wrapper row">
               <label class="col-4" for="new-hour">Hour: </label>
-              <select class="input-sm col-8 form-full" id="new-hour" type="number" v-model="selectedHour">
+              <select class="input-sm col-8 form-full" id="new-hour"v-model="selectedHour">
                 <option v-for="hour in hours" v-bind:value="hour">{{ hour }} Hours</option>
               </select>
           </div>
@@ -29,7 +29,7 @@
           <div class="form-field-wrapper row">
               <label class="col-4" for="new-minute">Minutes: </label>
 
-              <select class="input-sm col-8 form-full" id="new-minute" type="number" v-model="selectedMinute" v-on:change="hoursMinutes()">
+              <select class="input-sm col-8 form-full" id="new-minute" v-model="selectedMinute" v-on:change="hoursMinutes()">
                 <option v-bind:value="0">00 Minutes</option>
                 <option v-bind:value="0.25">15 Minutes</option>
                 <option v-bind:value="0.5">30 Minutes</option>

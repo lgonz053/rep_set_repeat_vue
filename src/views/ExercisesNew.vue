@@ -19,12 +19,13 @@
 
           <div class="form-field-wrapper row">
               <label class="col-4" for="new-description">Description: </label>
-              <input class="input-sm col-8 form-full" id="new-description" type="number" v-model="newExerciseDescription">
+              <textarea class="input-sm col-8 form-full" id="new-description" type="number" v-model="newExerciseDescription">
+              </textarea>
           </div>
 
           <div class="form-field-wrapper row">
               <label class="col-4" for="new-video-url">Video Url (optional): </label>
-              <input class="input-sm col-8 form-full" id="new-video-url" type="number" v-model="newExerciseUrl">
+              <input class="input-sm col-8 form-full" id="new-video-url" v-model="newExerciseUrl">
           </div>
 
           <div class="row">
@@ -55,13 +56,13 @@
 
             <div class="form-field-wrapper row">
                 <label class="col-4" for="edit-description">Description: </label>
-                <textarea class="input-sm col-8 form-full" id="edit-description" rows="15" type="number" v-model="exercise.description">
+                <textarea class="input-sm col-8 form-full" id="edit-description" v-model="exercise.description">
                 </textarea>
             </div>
 
             <div class="form-field-wrapper row">
                 <label class="col-4" for="edit-video-url">Video Url (optional): </label>
-                <input class="input-sm col-8 form-full" id="edit-video-url" type="number" v-model="exercise.video_url">
+                <input class="input-sm col-8 form-full" id="edit-video-url" type="text" v-model="exercise.video_url">
             </div>
 
             <div class="row">
